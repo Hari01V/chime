@@ -6,7 +6,9 @@ import Navs from './Navs';
 
 import '../../styles/SidePanel.css';
 
-const SidePanel = () => {
+const SidePanel = (props) => {
+  const { setNav } = props;
+
 
   return (
     <Segment
