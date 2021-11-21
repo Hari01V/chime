@@ -3,7 +3,8 @@ import { Segment, Menu, Icon, Item } from "semantic-ui-react";
 
 import '../../styles/Navs.css';
 
-const Navs = () => {
+const Navs = (props) => {
+  const { nav, setNav } = props;
 
   return (
     <Segment inverted textAlign="left"
@@ -12,7 +13,8 @@ const Navs = () => {
         style={{ width: '100%', background: 'inherit' }}>
         <Menu.Item
           className="nav-link"
-          onClick={() => { }}>
+          active={nav === "home"}
+          onClick={() => { setNav("home") }}>
           <span>
             <Icon name="exchange" /> HOME
           </span>

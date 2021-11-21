@@ -7,7 +7,7 @@ import Navs from './Navs';
 import '../../styles/SidePanel.css';
 
 const SidePanel = (props) => {
-  const { setNav } = props;
+  const { nav, setNav } = props;
 
 
   return (
@@ -24,7 +24,7 @@ const SidePanel = (props) => {
           </Header.Content>
         </Header>
       </Segment>
-      <Navs />
+      <Navs nav={nav} setNav={setNav} />
       <PlayLists />
     </Segment>
   )
