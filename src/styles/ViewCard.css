@@ -29,9 +29,18 @@
   margin-bottom: 0;
 }
 
+.viewcard-delete{
+  display: none;
+  font-size: 12px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  transform: translate(50%, -50%);
+}
+
 .viewcard-play{
   display: none;
-  font-size: 40px;
+  font-size: 20px;
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -40,6 +49,9 @@
 
 .viewcard:hover{
   background: #282828;
+}
+.viewcard:hover .viewcard-delete{
+  display: block;
 }
 .viewcard:hover .viewcard-play{
   display: block;

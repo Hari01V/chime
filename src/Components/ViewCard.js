@@ -6,18 +6,26 @@ import YourName from '../samples/YourName.jpg';
 import { Icon } from "semantic-ui-react";
 
 const ViewCard = (props) => {
-  const { data, setSong } = props;
+  const { data, setSong, deleteSong } = props;
 
   const changeSong = () => {
     setSong(data);
+  }
+
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    deleteSong(data._id, data.filename);
   }
 
   return (
     <div className="viewcard" onClick={changeSong}>
       <div className="viewcard-img-container">
         <img src={YourName} className="viewcard-img" />
+        <div className="viewcard-delete" onClick={handleDelete}>
+          <Icon circular name="delete" color="black" inverted />
+        </div>
         <div className="viewcard-play">
-          <Icon name="play circle" color="green" inverted />
+          <Icon circular name="play" color="green" inverted />
         </div>
       </div>
       <div className="viewcard-info">

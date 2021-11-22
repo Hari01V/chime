@@ -23,6 +23,10 @@ const Player = () => {
     })
   }, []);
 
+  const deleteSong = (id, filename) => {
+    api.deleteSong(id, filename);
+  }
+
   return (
     <Grid celled
       inverted
@@ -36,7 +40,10 @@ const Player = () => {
 
         <Grid.Column width={13} className="content-column"
           style={{ background: '#121212', fontSize: '1.2rem', boxShadow: 'none', height: '100%' }}>
-          <ContentPanel nav={nav} songs={songs} setSong={setSong} />
+          <ContentPanel nav={nav}
+            songs={songs}
+            setSong={setSong}
+            deleteSong={deleteSong} />
         </Grid.Column>
       </Grid.Row>
 

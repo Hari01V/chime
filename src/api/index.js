@@ -23,11 +23,16 @@ export const getSong = (filename) => {
   return api.get(`/song/${filename}`);
 }
 
+export const deleteSong = (id, filename) => {
+  return api.delete(`/${id}/${filename}`);
+}
+
 const apis = {
   addSong,
   getAllSongs,
   getAllSongsData,
-  getSong
+  getSong,
+  deleteSong
 }
 
 export default apis;

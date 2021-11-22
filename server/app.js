@@ -115,6 +115,25 @@ const setUp = () => {
       }
     })
   });
+
+  app.delete("/:id/:filename", (req, res) => {
+    gfs.remove({ filename: req.params.filename }, (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Removed from GFS FILES');
+      }
+    });
+    Song.findByIdAndRemove(req.params.id, (err) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        console.log("Removed the song file");
+        res.send("Removed the song file");
+      }
+    });
+  });
 }
 
 
