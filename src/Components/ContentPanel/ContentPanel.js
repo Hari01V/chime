@@ -6,11 +6,11 @@ import Home from './Home';
 import '../../styles/ContentPanel.css';
 
 const ContentPanel = (props) => {
-  const { nav, songs } = props;
+  const { nav, songs, setSong } = props;
 
   const getContent = () => {
     if (nav === "home") {
-      return <Home songs={songs} />;
+      return <Home songs={songs} setSong={setSong} />;
     }
   }
 

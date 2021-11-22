@@ -6,7 +6,7 @@ import ViewCard from "../ViewCard";
 import '../../styles/Home.css';
 
 const Home = (props) => {
-  const { songs } = props;
+  const { songs, setSong } = props;
 
   return (
     <Segment inverted textAlign="left"
@@ -15,8 +15,8 @@ const Home = (props) => {
         Songs for you
       </Header>
       <div className="songs-container">
-        {songs.map(song => (
-          <ViewCard data={song} />
+        {songs && songs.map((song, index) => (
+          <ViewCard data={song} key={index} setSong={setSong} />
         ))}
       </div>
     </Segment>

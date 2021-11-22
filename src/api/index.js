@@ -4,22 +4,29 @@ const api = axios.create({
   baseURL: 'http://localhost:8080/'
 })
 
-export const addSong = (musicData) => {
-  api.post("/song", musicData);
+export const addSong = (songData) => {
+  api.post("/song", songData);
+  console.log(songData);
 }
 
-export const getAllSong = () => {
+export const getAllSongs = () => {
   const data = api.get("/song/all");
   return data;
 }
 
-export const getSong = (id) => {
-  return api.get(`/music/${id}`);
+export const getAllSongsData = () => {
+  const data = api.get("/songdata/all");
+  return data;
+}
+
+export const getSong = (filename) => {
+  return api.get(`/song/${filename}`);
 }
 
 const apis = {
   addSong,
-  getAllSong,
+  getAllSongs,
+  getAllSongsData,
   getSong
 }
 

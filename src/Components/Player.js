@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Grid } from 'semantic-ui-react'
 
@@ -6,59 +6,22 @@ import BottomPanel from './BottomPanel/BottomPanel';
 import SidePanel from './SidePanel/SidePanel';
 import ContentPanel from './ContentPanel/ContentPanel';
 
+import api from "../api";
+
 import '../styles/Player.css';
-
-const desc = "Best Anime OST, Songs, Music Opening & Ending with Tokyo Ghoul, Death Note, Full Metal, Naruto... Top OP | Musica | Japanese, Los mejores. Also inc a few gaming picks."
-
-const SONGS = [
-  {
-    id: 'asdasd',
-    name: 'hari-song',
-    artist: 'hari',
-    desc: null
-  },
-  {
-    id: 'asdasd',
-    name: 'hari-song',
-    artist: 'hari',
-    desc: null
-  },
-  {
-    id: 'asdasd',
-    name: 'hari-song',
-    artist: 'hari',
-    desc: null
-  },
-  {
-    id: 'asdasd',
-    name: 'hari-song',
-    artist: null,
-    desc: desc
-  },
-  {
-    id: 'asdasd',
-    name: 'hari-song',
-    artist: null,
-    desc: desc
-  },
-  {
-    id: 'asdasd',
-    name: 'hari-song',
-    artist: 'hari',
-    desc: null
-  },
-  {
-    id: 'asdasd',
-    name: 'hari-song',
-    artist: null,
-    desc: desc
-  }
-];
 
 const Player = () => {
   const [nav, setNav] = useState("home");
-  const [songs, setSongs] = useState(SONGS);
+  const [songs, setSongs] = useState(null);
+  const [song, setSong] = useState(null);
 
+  useEffect(() => {
+    api.getAllSongsData().then((result) => {
+      console.log(result.data);
+      setSongs(result.data);
+      // setSong(result.data[0]);
+    })
+  }, []);
 
   return (
     <Grid celled
@@ -73,14 +36,14 @@ const Player = () => {
 
         <Grid.Column width={13} className="content-column"
           style={{ background: '#121212', fontSize: '1.2rem', boxShadow: 'none', height: '100%' }}>
-          <ContentPanel nav={nav} songs={songs} />
+          <ContentPanel nav={nav} songs={songs} setSong={setSong} />
         </Grid.Column>
       </Grid.Row>
 
       <Grid.Row centered style={{ height: '20%', boxShadow: 'none' }}>
         <Grid.Column width={16} className="bottom-column"
           style={{ background: '#181818', fontSize: '1.2rem' }}>
-          <BottomPanel />
+          <BottomPanel song={song} />
         </Grid.Column>
       </Grid.Row>
     </Grid>
