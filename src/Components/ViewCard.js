@@ -9,7 +9,10 @@ const ViewCard = (props) => {
   const { data, setSong, deleteSong } = props;
 
   const changeSong = () => {
-    setSong(data);
+    setSong({
+      ...data,
+      img: YourName
+    });
   }
 
   const handleDelete = (e) => {
